@@ -1,4 +1,4 @@
-# Contributing to ComfyUI-OpenAI-API
+# Contributing to ComfyUI-Local-OpenAI-API
 
 Thanks for considering a contribution! This is a small, single-purpose
 ComfyUI custom node (one node, one file:
@@ -16,8 +16,8 @@ intentionally lightweight.
 ## Before you start
 
 - **Check existing issues and PRs first** to avoid duplicate work:
-  [Issues](https://github.com/gaborm74/ComfyUI-OpenAI-API/issues) ·
-  [Pull Requests](https://github.com/gaborm74/ComfyUI-OpenAI-API/pulls)
+  [Issues](https://github.com/gaborm74/ComfyUI-Local-OpenAI-API/issues) ·
+  [Pull Requests](https://github.com/gaborm74/ComfyUI-Local-OpenAI-API/pulls)
 - **For anything beyond a trivial fix** (new inputs/outputs, behavior
   changes, new dependencies), open an issue first describing the problem
   and your proposed approach before writing code. This avoids wasted effort
@@ -32,8 +32,8 @@ real, running ComfyUI instance and exercising the node end-to-end.
 1. Fork and clone the repo into your ComfyUI's `custom_nodes/` directory:
    ```bash
    cd /path/to/ComfyUI/custom_nodes/
-   git clone https://github.com/<you>/ComfyUI-OpenAI-API.git
-   cd ComfyUI-OpenAI-API
+   git clone https://github.com/<you>/ComfyUI-Local-OpenAI-API.git
+   cd ComfyUI-Local-OpenAI-API
    git checkout -b my-fix-branch
    ```
 2. Install dependencies into whatever Python environment your ComfyUI

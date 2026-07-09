@@ -1,11 +1,12 @@
-# ComfyUI LLM Chat Completion Node
+# ComfyUI-Local-OpenAI-API
 
 > **This is a fork of [bgreene2/ComfyUI-OpenAI-API](https://github.com/bgreene2/ComfyUI-OpenAI-API)**,
-> maintained here because the upstream repo appears inactive (0 issues/PRs
-> ever filed, last commit 2025-10-04, no CONTRIBUTING guide — checked
-> 2026-07-09 before forking). This fork adds one feature and one bugfix
-> needed for reasoning-model support; see **[Changes in this fork](#changes-in-this-fork)**
-> below. All original functionality and credit is unchanged.
+> renamed to **ComfyUI-Local-OpenAI-API** and maintained here because the
+> upstream repo appears inactive (0 issues/PRs ever filed, last commit
+> 2025-10-04, no CONTRIBUTING guide — checked 2026-07-09 before forking).
+> This fork adds one feature and one bugfix needed for reasoning-model
+> support; see **[Changes in this fork](#changes-in-this-fork)** below. All
+> original functionality and credit is unchanged.
 
 This is a custom node that calls an LLM and outputs the resulting text.
 
@@ -21,8 +22,8 @@ This is a custom node that calls an LLM and outputs the resulting text.
 ## Installation
 
 1. Navigate to your custom_nodes folder
-2. Clone this repo: `git clone https://github.com/gaborm74/ComfyUI-OpenAI-API.git`
-3. Change to the directory `cd ComfyUI-OpenAI-API`
+2. Clone this repo: `git clone https://github.com/gaborm74/ComfyUI-Local-OpenAI-API.git`
+3. Change to the directory `cd ComfyUI-Local-OpenAI-API`
 4. Assuming the correct Python environemnt is loaded, install dependencies `pip install -r requirements.txt`
 5. Restart ComfyUI
 

@@ -998,7 +998,7 @@
         }
       ],
       "properties": {
-        "aux_id": "bgreene2/ComfyUI-OpenAI-API",
+        "aux_id": "gaborm74/ComfyUI-Local-OpenAI-API",
         "ver": "bc0b27627fd5c36dcef893fec56d063275cadd5b",
         "Node name for S&R": "OpenAIChatCompletion"
       },
