@@ -134,3 +134,8 @@ practical than opening a PR that would likely go unreviewed.
 
 - Originally based on https://github.com/tianyuw/ComfyUI-LLM-API
 - This fork's `disable_thinking` parameter and `None`-content guard: gaborm74, 2026-07-09
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, coding style, testing
+expectations, and the PR process.

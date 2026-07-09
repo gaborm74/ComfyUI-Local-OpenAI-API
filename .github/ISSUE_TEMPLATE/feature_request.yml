@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a new input, output, or behavior for the node
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the use case that isn't currently possible or is awkward today.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: >
+        What would the new input/output/behavior look like? For anything
+        beyond a trivial change, please describe your approach here BEFORE
+        opening a PR — see CONTRIBUTING.md.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Can this be achieved today via existing inputs, a separate node, or a workflow-level trick?

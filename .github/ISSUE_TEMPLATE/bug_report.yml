@@ -1,0 +1,64 @@
+name: Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: input
+    id: comfyui-version
+    attributes:
+      label: ComfyUI version
+      description: From `Help > About` in the UI, or `git log -1` in your ComfyUI checkout
+      placeholder: "e.g. 0.20.1"
+    validations:
+      required: true
+
+  - type: input
+    id: backend
+    attributes:
+      label: LLM backend
+      description: Which OpenAI-compatible server are you calling?
+      placeholder: "e.g. vLLM, LM Studio, llama.cpp, OpenAI cloud, Ollama"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reasoning-model
+    attributes:
+      label: Is this a reasoning/thinking model?
+      description: e.g. Qwen3/Qwen3.5-family with --reasoning-parser enabled, DeepSeek-R1, o1/o3, etc.
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: node-inputs
+    attributes:
+      label: Node inputs used
+      description: The exact values you set on the node (redact any API keys)
+      placeholder: |
+        endpoint: http://localhost:8000/v1
+        model: my-model-name
+        disable_thinking: true
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Full error / traceback
+      description: >
+        Paste the FULL error from the ComfyUI server console, not just what
+        the UI popup shows — the console has the real stack trace.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
