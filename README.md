@@ -51,19 +51,34 @@ The node has the following parameters:
 - strip_reasoning - Whether to post-process the returned text to split out the reasoning and non-reasoning content
 - reasoning_tag_open - The string that starts reasoning content
 - reasoning_tag_close - The string that ends reasoning content
-- **disable_thinking** *(this fork, default `False`)* - When enabled, sends `chat_template_kwargs: {"enable_thinking": false}` as `extra_body` on the chat-completion request. See [Changes in this fork](#changes-in-this-fork) for why this exists.
+- **disable_thinking** *(this fork, default `True`)* - When enabled, sends `chat_template_kwargs: {"enable_thinking": false}` as `extra_body` on the chat-completion request. Defaults on since it's a safe no-op against endpoints/models that don't support it. See [Changes in this fork](#changes-in-this-fork) for why this exists.
 
 The node has the following outputs:
 
 - Text - The text content after calling the LLM
 - Reasoning - The reasoning content after calling the LLM
 
+### The `disable_thinking` option (this fork)
+
+![disable_thinking option on the node](assets/disable_thinking_option.png)
+
+The screenshot above shows the node with `disable_thinking` set to `true`
+(the default) — note the node's title bar reflects the current state
+(`LLM Chat Completion (disable_thinking = true)`) and the checkbox sits
+below `reasoning_tag_close` as the last input. See
+[Changes in this fork](#changes-in-this-fork) for the full story on why this
+option exists and what it fixes.
+
 For basic usage, leave everything default except for `endpoint` and `model`. Connect a `String (multiline)` node to the `text_prompt` input. Connect the `Text` output to two nodes: a `Preview Any` node, and the text input of your text encoder node (might be named like `CLIP Text Encode` or similar).
 
 ![Basic usage example (before)](assets/basic_usage_example_before.png)
 ![Basic usage example (after)](assets/basic_usage_example_after.png)
 
-See [this example workflow](workflows/flux_dev_example_openai_api.json).
+See [this example workflow](workflows/flux_dev_example_openai_api.json) for
+the basic setup, or
+[this example workflow](workflows/pony_disable_thinking_example.json) for a
+full pipeline demonstrating `disable_thinking` end-to-end (prompt enhancer →
+Pony-Diffusion-V6-XL generation, with original/enhanced prompt previews).
 
 ## Recommended Usage
 
@@ -102,7 +117,7 @@ actual answer. Against a real deployment this caused two distinct failures:
    one-paragraph prompt enhancement on a 9B model on local hardware
    (DGX Spark / GB10).
 
-**Fix — a `disable_thinking` toggle (default `False`, opt-in, fully
+**Fix — a `disable_thinking` toggle (default `True`, fully
 backward-compatible):**
 
 - When enabled, the node passes `extra_body={"chat_template_kwargs":
@@ -114,8 +129,9 @@ backward-compatible):**
   same prompt, temperature, and seed, with comparable output quality.
 - Endpoints/models that don't recognize `chat_template_kwargs` simply ignore
   the extra field — this is a silent no-op for non-reasoning models or
-  providers that don't support it, so it's safe to leave the checkbox
-  visible without affecting existing workflows.
+  providers that don't support it, so the checkbox **defaults to `true`**:
+  most users benefit from the fast path with zero configuration, and it's
+  safe even against endpoints that don't understand the flag.
 - Also added a defensive `if result is None: result = ""` guard right after
   the API call, independent of the toggle above — so a `None` content (from
   hitting `finish_reason: "length"` for *any* reason, not just this specific
