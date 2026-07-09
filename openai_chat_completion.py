@@ -30,7 +30,7 @@ class OpenAIChatCompletion:
                 "strip_reasoning": ("BOOLEAN", {"default": True}),
                 "reasoning_tag_open": ("STRING", {"multiline": False, "default": "<think>"}),
                 "reasoning_tag_close": ("STRING", {"multiline": False, "default": "</think>"}),
-                "disable_thinking": ("BOOLEAN", {"default": False, "tooltip": "Sends chat_template_kwargs={'enable_thinking': false} to the endpoint. For always-thinking Qwen3/Qwen3.5-family reasoning models served via vLLM, this skips the internal <think> pass entirely instead of paying for it and stripping it after the fact -- ~10x faster (e.g. ~72s -> ~7s observed against a Qwen3.5-based 9B model on local vLLM). No effect on non-reasoning models or endpoints that don't recognize the field (silently ignored)."}),
+                "disable_thinking": ("BOOLEAN", {"default": True, "tooltip": "Sends chat_template_kwargs={'enable_thinking': false} to the endpoint. For always-thinking Qwen3/Qwen3.5-family reasoning models served via vLLM, this skips the internal <think> pass entirely instead of paying for it and stripping it after the fact -- ~10x faster (e.g. ~72s -> ~7s observed against a Qwen3.5-based 9B model on local vLLM). No effect on non-reasoning models or endpoints that don't recognize the field (silently ignored). Defaults to True since it's a safe no-op when unsupported."}),
             },
             "optional": {
                 "image": ("IMAGE",),
